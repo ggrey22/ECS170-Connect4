@@ -75,7 +75,7 @@ public class minimax extends AIModule
     {
         for(int y = 0; y < height; y++)
         {
-            for(int x = 0; x < width; x++)
+            for(int x = 0; x < width - 3; x++)
             {
                 if(state.getAt(x, y) == playerID)
                 {
@@ -98,6 +98,7 @@ public class minimax extends AIModule
                         {
                             consec = 4;
                         }
+
                         inARow[consec - 2]++;
                     }
                 }
@@ -109,7 +110,7 @@ public class minimax extends AIModule
     {
         for(int x = 0; x < width; x++)
         {
-            for(int y = 0; y < width; y++)
+            for(int y = 0; y < height - 3; y++)
             {
                 if(state.getAt(x, y) == playerID)
                 {
@@ -144,7 +145,7 @@ public class minimax extends AIModule
         //First half
         for(int y = 0; y < height; y++)
         {
-            for(int diag = 0; y+diag < height && diag < width; diag++)
+            for(int diag = 0; y+diag < (height - 3) && diag < (width - 3); diag++)
             {
                 if(state.getAt(diag, y + diag) != playerID)
                 {
@@ -174,7 +175,7 @@ public class minimax extends AIModule
         //Second half
         for(int x = 1; x < width; x++)
         {
-            for(int diag = 0; x+diag < width && diag < height; diag++)
+            for(int diag = 0; x+diag < (width-3) && diag < (height-3); diag++)
             {
                 if(state.getAt(x + diag, diag) != playerID)
                 {
