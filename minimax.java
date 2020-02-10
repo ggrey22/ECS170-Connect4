@@ -62,112 +62,203 @@ public class minimax extends AIModule
         }
     }
 
-    private void numInARow(final GameStateModule state, int inARow[], int playerID)
+    private void numInARow(final GameStateModule state, int inARowP1[], int inARowP2[])
     {
         int x = state.getWidth();
         int y = state.getHeight();
-        parseHorizontal(state, inARow, x, y, playerID);
-        parseVertical(state, inARow, x, y, playerID);
-        parseDiagonal(state, inARow, x, y, playerID);
+        parseHorizontal(state, inARowP1, inARowP2, x, y);
+        parseVertical(state, inARowP1, inARowP2, x, y);
+        parseDiagonal(state, inARowP1, inARowP2, x, y);
     }
 
-    private void parseHorizontal(final GameStateModule state, int inARow[], int width, int height, int playerID)
+    private void parseHorizontal(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
     {
         for(int y = 0; y < height; y++)
         {
             for(int x = 0; x < width - 3; x++)
             {
-                if(state.getAt(x, y) == playerID)
-                {
-                    int consec = 0;
-                    while(x < width)
-                    {
-                        if(state.getAt(x, y) == playerID)
-                        {
-                            consec++;
-                            x++;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    if(consec >= 2)
-                    {
-                        if(consec > 4)
-                        {
-                            consec = 4;
-                        }
-
-                        inARow[consec - 2]++;
-                    }
-                }
-            }
-        }
-    }
-
-    private void parseVertical(final GameStateModule state, int inARow[], int width, int height, int playerID)
-    {
-        for(int x = 0; x < width; x++)
-        {
-            for(int y = 0; y < height - 3; y++)
-            {
-                if(state.getAt(x, y) == playerID)
-                {
-                    int consec = 0;
-                    while(y < height)
-                    {
-                        if(state.getAt(x, y) == playerID)
-                        {
-                            consec++;
-                            y++;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    if(consec >= 2)
-                    {
-                        if(consec > 4)
-                        {
-                            consec = 4;
-                        }
-                        inARow[consec - 2]++;
-                    }
-                }
-            }
-        }
-    }
-
-    private void parseDiagonal(final GameStateModule state, int inARow[], int width, int height, int playerID)
-    {
-        //First half
-        for(int y = 0; y < height; y++)
-        {
-            for(int diag = 0; y+diag < (height - 3) && diag < (width - 3); diag++)
-            {
-                if(state.getAt(diag, y + diag) != playerID)
+                int playerID = state.getAt(x, y);
+                if(playerID == 0)
                 {
                     continue;
                 }
                 int consec = 0;
-                while(y+diag < height && diag < width)
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
                 {
-                    if(state.getAt(diag, y + diag) != playerID)
+                    if(x >= width)
                     {
                         break;
                     }
-                    consec++;
-                    diag++;
+                    int coinID = state.getAt(x, y);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        x++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    x++;
+                    continue;
                 }
-                if(consec >= 2)
+                if(!blocked && consec >= 1)
                 {
                     if(consec > 4)
                     {
                         consec = 4;
                     }
-                    inARow[consec - 2]++;
+                    if(playerID == 1)
+                    {
+                        inARowP1[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowP2[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    x--;
+                    continue;
+                }
+            }
+        }
+    }
+
+    private void parseVertical(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
+    {
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height - 3; y++)
+            {
+                int playerID = state.getAt(x, y);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if(y >= height)
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(x, y);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        y++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    y++;
+                    continue;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == 1)
+                    {
+                        inARowP1[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowP2[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    y--;
+                    continue;
+                }
+            }
+        }
+    }
+
+    private void parseDiagonal(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
+    {
+        //First half
+        for(int y = 0; y < height; y++)
+        {
+            for(int diag = 0; (y + diag < height - 3) && (diag < width - 3); diag++)
+            {
+                int playerID = state.getAt(diag, y + diag);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if((y + diag >= height) || (diag >= width))
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(diag, y + diag);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        diag++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    diag++;
+                    continue;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == 1)
+                    {
+                        inARowP1[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowP2[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    diag--;
+                    continue;
                 }
             }
         }
@@ -175,41 +266,73 @@ public class minimax extends AIModule
         //Second half
         for(int x = 1; x < width; x++)
         {
-            for(int diag = 0; x+diag < (width-3) && diag < (height-3); diag++)
+            for(int diag = 0; (diag < height - 3) && (x + diag < width - 3); diag++)
             {
-                if(state.getAt(x + diag, diag) != playerID)
+                int playerID = state.getAt(x + diag, diag);
+                if(playerID == 0)
                 {
                     continue;
                 }
                 int consec = 0;
-                while(x+diag < width && diag < height)
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
                 {
-                    if(state.getAt(x + diag, diag) != playerID)
+                    if((diag >= height) || (x + diag >= width))
                     {
                         break;
                     }
-                    consec++;
+                    int coinID = state.getAt(x + diag, diag);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        diag++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
                     diag++;
+                    continue;
                 }
-                if(consec >= 2)
+                if(!blocked && consec >= 1)
                 {
                     if(consec > 4)
                     {
                         consec = 4;
                     }
-                    inARow[consec - 2]++;
+                    if(playerID == 1)
+                    {
+                        inARowP1[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowP2[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    diag--;
+                    continue;
                 }
             }
         }
+
     }
 
     // randomly assigns a value to a state
 	private int eval(final GameStateModule state){
-        int inARowP1[] = {0, 0, 0};
-        int inARowP2[] = {0, 0, 0};
-        numInARow(state, inARowP1, 1);
-        numInARow(state, inARowP2, 1);
-        return(inARowP1[0] + 100 * inARowP1[1] + 10000 * inARowP1[2] - (inARowP2[0] + 100 * inARowP2[1] + 10000 * inARowP2[2]));
+        int inARowP1[] = {0, 0, 0, 0};
+        int inARowP2[] = {0, 0, 0, 0};
+        numInARow(state, inARowP1, inARowP2);
+        return(inARowP1[0] + 100 * inARowP1[1] + 10000 * inARowP1[2] + 1000000 * inARowP1[3] - (inARowP2[0] + 100 * inARowP2[1] + 10000 * inARowP2[2] + 1000000 * inARowP2[3]));
 	}
 
 
