@@ -62,27 +62,27 @@ public class minimax extends AIModule
         }
     }
 
-    private void numInARow(final GameStateModule state, int inARow[])
+    private void numInARow(final GameStateModule state, int inARow[], int playerID)
     {
         int x = state.getWidth();
         int y = state.getHeight();
-        parseHorizontal(state, inARow, x, y);
-        parseVertical(state, inARow, x, y);
-        parseDiagonal(state, inARow, x, y);
+        parseHorizontal(state, inARow, x, y, playerID);
+        parseVertical(state, inARow, x, y, playerID);
+        parseDiagonal(state, inARow, x, y, playerID);
     }
 
-    private void parseHorizontal(final GameStateModule state, int inARow[], int width, int height)
+    private void parseHorizontal(final GameStateModule state, int inARow[], int width, int height, int playerID)
     {
         for(int y = 0; y < height; y++)
         {
             for(int x = 0; x < width; x++)
             {
-                if(state.getAt(x, y) == player)
+                if(state.getAt(x, y) == playerID)
                 {
                     int consec = 0;
                     while(x < width)
                     {
-                        if(state.getAt(x, y) == player)
+                        if(state.getAt(x, y) == playerID)
                         {
                             consec++;
                             x++;
@@ -105,18 +105,18 @@ public class minimax extends AIModule
         }
     }
 
-    private void parseVertical(final GameStateModule state, int inARow[], int width, int height)
+    private void parseVertical(final GameStateModule state, int inARow[], int width, int height, int playerID)
     {
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < width; y++)
             {
-                if(state.getAt(x, y) == player)
+                if(state.getAt(x, y) == playerID)
                 {
                     int consec = 0;
                     while(y < height)
                     {
-                        if(state.getAt(x, y) == player)
+                        if(state.getAt(x, y) == playerID)
                         {
                             consec++;
                             y++;
@@ -139,21 +139,21 @@ public class minimax extends AIModule
         }
     }
 
-    private void parseDiagonal(final GameStateModule state, int inARow[], int width, int height)
+    private void parseDiagonal(final GameStateModule state, int inARow[], int width, int height, int playerID)
     {
         //First half
         for(int y = 0; y < height; y++)
         {
             for(int diag = 0; y+diag < height && diag < width; diag++)
             {
-                if(state.getAt(diag, y + diag) != player)
+                if(state.getAt(diag, y + diag) != playerID)
                 {
                     continue;
                 }
                 int consec = 0;
                 while(y+diag < height && diag < width)
                 {
-                    if(state.getAt(diag, y + diag) != player)
+                    if(state.getAt(diag, y + diag) != playerID)
                     {
                         break;
                     }
@@ -176,14 +176,14 @@ public class minimax extends AIModule
         {
             for(int diag = 0; x+diag < width && diag < height; diag++)
             {
-                if(state.getAt(x + diag, diag) != player)
+                if(state.getAt(x + diag, diag) != playerID)
                 {
                     continue;
                 }
                 int consec = 0;
                 while(x+diag < width && diag < height)
                 {
-                    if(state.getAt(x + diag, diag) != player)
+                    if(state.getAt(x + diag, diag) != playerID)
                     {
                         break;
                     }
@@ -204,9 +204,11 @@ public class minimax extends AIModule
 
     // randomly assigns a value to a state
 	private int eval(final GameStateModule state){
-        int inARow[] = {0, 0, 0};
-        numInARow(state, inARow);
-        return(10 * inARow[0] + 100 * inARow[1] + 1000 * inARow[2]);
+        int inARowP1[] = {0, 0, 0};
+        int inARowP2[] = {0, 0, 0};
+        numInARow(state, inARowP1, 1);
+        numInARow(state, inARowP2, 1);
+        return(inARowP1[0] + 100 * inARowP1[1] + 10000 * inARowP1[2] - (inARowP2[0] + 100 * inARowP2[1] + 10000 * inARowP2[2]));
 	}
 
 
