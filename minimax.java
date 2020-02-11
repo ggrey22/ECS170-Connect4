@@ -145,7 +145,7 @@ public class minimax extends AIModule
     {
         for(int y = 0; y < height; y++)
         {
-            for(int x = 0; x < width - 3; x++)
+            for(int x = width - 1; x >= 3; x--)
             {
                 int playerID = state.getAt(x, y);
                 if(playerID == 0)
@@ -157,7 +157,7 @@ public class minimax extends AIModule
                 boolean blocked = false;
                 for(int i = 0; i < 4; i++)
                 {
-                    if(x >= width)
+                    if(x < 0)
                     {
                         break;
                     }
@@ -165,7 +165,7 @@ public class minimax extends AIModule
                     if(stillGoing && playerID == coinID)
                     {
                         consec++;
-                        x++;
+                        x--;
                         continue;
                     }
                     if(coinID != 0 && coinID != playerID)
@@ -177,7 +177,70 @@ public class minimax extends AIModule
                     {
                         stillGoing = false;
                     }
+                    x--;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == player)
+                    {
+                        inARowMe[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowOpponent[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
                     x++;
+                    continue;
+                }
+            }
+        }
+    }
+
+    private void parseVerticalB2T(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    {
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height - 3; y++)
+            {
+                int playerID = state.getAt(x, y);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if(y >= height)
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(x, y);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        y++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    y++;
                     continue;
                 }
                 if(!blocked && consec >= 1)
@@ -198,15 +261,14 @@ public class minimax extends AIModule
                 }
                 if(blocked)
                 {
-                    x--;
+                    y--;
                     continue;
                 }
             }
         }
     }
-
-
-    private void parseVertical(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    
+    private void parseVerticalT2B(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         for(int x = 0; x < width; x++)
         {
