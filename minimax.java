@@ -18,7 +18,8 @@ public class minimax extends AIModule
 				chosenMove = bestMoveSeen;
         }
 		if(game.canMakeMove(chosenMove))
-			game.makeMove(chosenMove);
+            game.makeMove(chosenMove);
+        System.out.println(eval(game));
 	}
 
 	private int minimax(final GameStateModule state, int depth, int playerID) {
@@ -68,7 +69,8 @@ public class minimax extends AIModule
         int y = state.getHeight();
         parseHorizontal(state, inARowMe, inARowOpponent, x, y);
         parseVertical(state, inARowMe, inARowOpponent, x, y);
-        parseDiagonal(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalBotLeft(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalBotRight(state, inARowMe, inARowOpponent, x, y);
     }
 
     private void parseHorizontal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
@@ -199,7 +201,7 @@ public class minimax extends AIModule
         }
     }
 
-    private void parseDiagonal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    private void parseDiagonalBotLeft(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         //First half
         for(int y = 0; y < height; y++)
@@ -326,6 +328,134 @@ public class minimax extends AIModule
         }
 
     }
+
+    private void parseDiagonalBotRight(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    {
+        //First half
+        for(int y = height - 1; y >= 0; y--)
+        {
+            for(int diag = 0; (y - diag >= 3) && (diag < width - 3); diag++)
+            {
+                int playerID = state.getAt(diag, y - diag);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if((y - diag < 0) || (diag >= width))
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(diag, y - diag);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        diag++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    diag++;
+                    continue;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == player)
+                    {
+                        inARowMe[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowOpponent[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    diag--;
+                    continue;
+                }
+            }
+        }
+
+        //Second half
+        for(int x = 1; x < width - 3; x++)
+        {
+            for(int diag = 0; ((height - 1) - diag > 3) && (x + diag < width - 3); diag++)
+            {
+                int playerID = state.getAt(x + diag, height - 1 - diag);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if((diag >= height) || (x + diag >= width))
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(x + diag, height - 1 -diag);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        diag++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    diag++;
+                    continue;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == player)
+                    {
+                        inARowMe[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowOpponent[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    diag--;
+                    continue;
+                }
+            }
+        }
+    }
+
 
     // randomly assigns a value to a state
 	private int eval(final GameStateModule state){
