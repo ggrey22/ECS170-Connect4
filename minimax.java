@@ -16,7 +16,7 @@ public class minimax extends AIModule
 			minimax(game, 0, player);
             if(!terminate)
 				chosenMove = bestMoveSeen;
-		}
+        }
 		if(game.canMakeMove(chosenMove))
 			game.makeMove(chosenMove);
 	}
@@ -62,16 +62,16 @@ public class minimax extends AIModule
         }
     }
 
-    private void numInARow(final GameStateModule state, int inARowP1[], int inARowP2[])
+    private void numInARow(final GameStateModule state, int inARowMe[], int inARowOpponent[])
     {
         int x = state.getWidth();
         int y = state.getHeight();
-        parseHorizontal(state, inARowP1, inARowP2, x, y);
-        parseVertical(state, inARowP1, inARowP2, x, y);
-        parseDiagonal(state, inARowP1, inARowP2, x, y);
+        parseHorizontal(state, inARowMe, inARowOpponent, x, y);
+        parseVertical(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonal(state, inARowMe, inARowOpponent, x, y);
     }
 
-    private void parseHorizontal(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
+    private void parseHorizontal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         for(int y = 0; y < height; y++)
         {
@@ -116,13 +116,13 @@ public class minimax extends AIModule
                     {
                         consec = 4;
                     }
-                    if(playerID == 1)
+                    if(playerID == player)
                     {
-                        inARowP1[consec - 1]++;
+                        inARowMe[consec - 1]++;
                     }
                     else
                     {
-                        inARowP2[consec - 1]++;
+                        inARowOpponent[consec - 1]++;
                     }
                     continue;
                 }
@@ -135,7 +135,7 @@ public class minimax extends AIModule
         }
     }
 
-    private void parseVertical(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
+    private void parseVertical(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         for(int x = 0; x < width; x++)
         {
@@ -180,13 +180,13 @@ public class minimax extends AIModule
                     {
                         consec = 4;
                     }
-                    if(playerID == 1)
+                    if(playerID == player)
                     {
-                        inARowP1[consec - 1]++;
+                        inARowMe[consec - 1]++;
                     }
                     else
                     {
-                        inARowP2[consec - 1]++;
+                        inARowOpponent[consec - 1]++;
                     }
                     continue;
                 }
@@ -199,7 +199,7 @@ public class minimax extends AIModule
         }
     }
 
-    private void parseDiagonal(final GameStateModule state, int inARowP1[], int inARowP2[], int width, int height)
+    private void parseDiagonal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         //First half
         for(int y = 0; y < height; y++)
@@ -245,13 +245,13 @@ public class minimax extends AIModule
                     {
                         consec = 4;
                     }
-                    if(playerID == 1)
+                    if(playerID == player)
                     {
-                        inARowP1[consec - 1]++;
+                        inARowMe[consec - 1]++;
                     }
                     else
                     {
-                        inARowP2[consec - 1]++;
+                        inARowOpponent[consec - 1]++;
                     }
                     continue;
                 }
@@ -307,13 +307,13 @@ public class minimax extends AIModule
                     {
                         consec = 4;
                     }
-                    if(playerID == 1)
+                    if(playerID == player)
                     {
-                        inARowP1[consec - 1]++;
+                        inARowMe[consec - 1]++;
                     }
                     else
                     {
-                        inARowP2[consec - 1]++;
+                        inARowOpponent[consec - 1]++;
                     }
                     continue;
                 }
@@ -329,11 +329,9 @@ public class minimax extends AIModule
 
     // randomly assigns a value to a state
 	private int eval(final GameStateModule state){
-        int inARowP1[] = {0, 0, 0, 0};
-        int inARowP2[] = {0, 0, 0, 0};
-        numInARow(state, inARowP1, inARowP2);
-        return(inARowP1[0] + 100 * inARowP1[1] + 10000 * inARowP1[2] + 1000000 * inARowP1[3] - (inARowP2[0] + 100 * inARowP2[1] + 10000 * inARowP2[2] + 1000000 * inARowP2[3]));
+        int inARowMe[] = {0, 0, 0, 0};
+        int inARowOpponent[] = {0, 0, 0, 0};
+        numInARow(state, inARowMe, inARowOpponent);
+        return(100 * inARowMe[1] + 10000 * inARowMe[2] + 1000000 * inARowMe[3] - (100 * inARowOpponent[1] + 10000 * inARowOpponent[2] + 1000000 * inARowOpponent[3]));
 	}
-
-
 }
