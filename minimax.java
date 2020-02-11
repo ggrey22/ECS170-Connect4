@@ -67,13 +67,17 @@ public class minimax extends AIModule
     {
         int x = state.getWidth();
         int y = state.getHeight();
-        parseHorizontal(state, inARowMe, inARowOpponent, x, y);
-        parseVertical(state, inARowMe, inARowOpponent, x, y);
-        parseDiagonalBotLeft(state, inARowMe, inARowOpponent, x, y);
-        parseDiagonalBotRight(state, inARowMe, inARowOpponent, x, y);
+        parseHorizontalL2R(state, inARowMe, inARowOpponent, x, y);
+        parseHorizontalR2L(state, inARowMe, inARowOpponent, x, y);
+        parseVerticalT2B(state, inARowMe, inARowOpponent, x, y);
+        parseVerticalB2T(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalBotL2TopR(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalTopR2BotL(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalBotR2TopL(state, inARowMe, inARowOpponent, x, y);
+        parseDiagonalTopL2BotR(state, inARowMe, inARowOpponent, x, y);
     }
 
-    private void parseHorizontal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    private void parseHorizontalL2R(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
         for(int y = 0; y < height; y++)
         {
@@ -136,6 +140,71 @@ public class minimax extends AIModule
             }
         }
     }
+
+    private void parseHorizontalR2L(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
+    {
+        for(int y = 0; y < height; y++)
+        {
+            for(int x = 0; x < width - 3; x++)
+            {
+                int playerID = state.getAt(x, y);
+                if(playerID == 0)
+                {
+                    continue;
+                }
+                int consec = 0;
+                boolean stillGoing = true;
+                boolean blocked = false;
+                for(int i = 0; i < 4; i++)
+                {
+                    if(x >= width)
+                    {
+                        break;
+                    }
+                    int coinID = state.getAt(x, y);
+                    if(stillGoing && playerID == coinID)
+                    {
+                        consec++;
+                        x++;
+                        continue;
+                    }
+                    if(coinID != 0 && coinID != playerID)
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    if(coinID == 0)
+                    {
+                        stillGoing = false;
+                    }
+                    x++;
+                    continue;
+                }
+                if(!blocked && consec >= 1)
+                {
+                    if(consec > 4)
+                    {
+                        consec = 4;
+                    }
+                    if(playerID == player)
+                    {
+                        inARowMe[consec - 1]++;
+                    }
+                    else
+                    {
+                        inARowOpponent[consec - 1]++;
+                    }
+                    continue;
+                }
+                if(blocked)
+                {
+                    x--;
+                    continue;
+                }
+            }
+        }
+    }
+
 
     private void parseVertical(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
