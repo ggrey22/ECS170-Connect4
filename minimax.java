@@ -13,11 +13,8 @@ public class minimax extends AIModule
         player = game.getActivePlayer();
         opponent = (game.getActivePlayer() == 1?2:1);
 		//begin recursion
-		while(!terminate){
-            minimax(game, 0, player);
-            if(!terminate)
-				chosenMove = bestMoveSeen;
-        }
+        minimax(game, 0, player);
+		chosenMove = bestMoveSeen;
 		if(game.canMakeMove(chosenMove))
             game.makeMove(chosenMove);
         System.out.println(eval(game, true));
@@ -275,13 +272,16 @@ public class minimax extends AIModule
                 System.out.print(inARowOpponent[i] + " ");
             }
         }
-        if(inARowOpponent[3] >= 1)
+        if(state.isGameOver())
         {
-            return -10000000;
-        }
-        else if(inARowMe[3] >= 1)
-        {
-            return 10000000;
+            if(state.getWinner() == opponent)
+            {
+                return -10000000;
+            }
+            else
+            {
+                return 10000000;
+            }
         }
         else{
             return(inARowMe[0] + 100 * inARowMe[1] + 10000 * inARowMe[2] - (inARowOpponent[0] + 100 * inARowOpponent[1] + 10000 * inARowOpponent[2]));
