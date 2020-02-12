@@ -83,7 +83,7 @@ public class minimax2 extends AIModule
             {
                 int initialOpponent = inARowOpponent[2];
                 parseHorizontalFromXY(state, inARowMe, inARowOpponent, x, y);
-                if(inARowOpponent[2] != initialOpponent)
+                if(inARowOpponent[2] != initialOpponent && state.getAt(x, y) == 0)
                 {
                     break;
                 }
@@ -135,7 +135,7 @@ public class minimax2 extends AIModule
             {
                 int initialOpponent = inARowOpponent[2];
                 parseVerticalFromXY(state, inARowMe, inARowOpponent, x, y);
-                if(inARowOpponent[2] != initialOpponent)
+                if(inARowOpponent[2] != initialOpponent && state.getAt(x, y) == 0)
                 {
                     break;
                 }
@@ -187,7 +187,7 @@ public class minimax2 extends AIModule
             {
                 int initialOpponent = inARowOpponent[2];
                 parseDiagonalBotL2TopRFromXY(state, inARowMe, inARowOpponent, x, y);
-                if(inARowOpponent[2] != initialOpponent)
+                if(inARowOpponent[2] != initialOpponent && state.getAt(x, y) == 0)
                 {
                     break;
                 }
@@ -239,7 +239,7 @@ public class minimax2 extends AIModule
             {
                 int initialOpponent = inARowOpponent[2];
                 parseDiagonalBotR2TopLFromXY(state, inARowMe, inARowOpponent, x, y);
-                if(inARowOpponent[2] != initialOpponent)
+                if(inARowOpponent[2] != initialOpponent && state.getAt(x, y) == 0)
                 {
                     break;
                 }
