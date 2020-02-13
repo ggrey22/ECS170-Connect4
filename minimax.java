@@ -74,7 +74,7 @@ public class minimax extends AIModule
 
     private void parseHorizontal(final GameStateModule state, int inARowMe[], int inARowOpponent[], int width, int height)
     {
-        for(int x = 0; x < width - 3; x++)
+        for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < height - 3; y++)
             {
