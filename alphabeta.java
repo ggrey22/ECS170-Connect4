@@ -4,9 +4,10 @@ public class alphabeta extends AIModule
 {
 	int player;
 	int opponent;
-    int maxDepth = 8;
+    int maxDepth = 10;
     int numAtDepth = 0;
-	int bestMoveSeen;
+    int bestMoveSeen;
+    HashMap<GameStateModule, Integer> evalMap = new HashMap<GameStateModule, Integer>();
 
 	public void getNextMove(final GameStateModule game)
 	{
@@ -28,41 +29,78 @@ public class alphabeta extends AIModule
         }
         int bestVal = Integer.MIN_VALUE;
         depth++;
+        //Max's turn
         if(player == playerID)
         {
             int v = Integer.MIN_VALUE + 1;
+            Map<Integer, Integer> unsortedEvals = new HashMap<Integer, Integer>();
             for(int i = 0; i < state.getWidth(); i++)
             {
                 if(state.canMakeMove(i))
                 {
+                    int currentEval;
                     state.makeMove(i);
-                    v = Math.max(v, alphabeta(state, depth, alpha, beta, opponent));
+                    currentEval = eval(state, false);
+                    unsortedEvals.put(i, currentEval);
                     state.unMakeMove();
-                    alpha = Math.max(v, alpha);
-                    if (v > bestVal)
+                }
+            }
+                //Sort the possible moves by descending order
+            LinkedHashMap<Integer, Integer> sortedEvals = new LinkedHashMap<>();
+            unsortedEvals.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedEvals.put(x.getKey(), x.getValue()));
+
+            for(int move : sortedEvals.keySet())
+            {
+                state.makeMove(move);
+                v = Math.max(v, alphabeta(state, depth, alpha, beta, opponent));
+                state.unMakeMove();
+                alpha = Math.max(v, alpha);
+                if (v > bestVal)
+                {
+                    bestVal = v;
+                    if(depth == 1)
                     {
-                        bestVal = v;
-                        if(depth == 1)
-                        {
-                            bestMoveSeen = i;
-                        }
+                        bestMoveSeen = move;
                     }
-                    if(alpha >= beta)
-                    {
-                        break;
-                    }
+                }
+                if(alpha >= beta)
+                {
+                    break;
                 }
             }
             return v;
         }
+        //Min's turn
         else
         {
             int v = Integer.MAX_VALUE;
+            Map<Integer, Integer> unsortedEvals = new HashMap<Integer, Integer>();
             for(int i = 0; i < state.getWidth(); i++)
             {
                 if(state.canMakeMove(i))
                 {
+                    int currentEval;
                     state.makeMove(i);
+                    currentEval = eval(state, false);
+                    unsortedEvals.put(i, currentEval);
+                    state.unMakeMove();
+                }
+            }
+                //Sort the possible moves by descending order
+            LinkedHashMap<Integer, Integer> sortedEvals = new LinkedHashMap<>();
+            unsortedEvals.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEachOrdered(x -> sortedEvals.put(x.getKey(), x.getValue()));
+
+            for(int move : sortedEvals.keySet())
+            {
+                if(state.canMakeMove(move))
+                {
+                    state.makeMove(move);
                     v = Math.min(v, alphabeta(state, depth, alpha, beta, player));
                     state.unMakeMove();
                     beta = Math.min(v, beta);
