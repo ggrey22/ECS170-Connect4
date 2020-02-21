@@ -4,7 +4,7 @@ public class minimax extends AIModule
 {
 	int player;
 	int opponent;
-    int maxDepth = 5;
+    int maxDepth = 6;
     int numAtDepth = 0;
 	int bestMoveSeen;
 
@@ -17,7 +17,6 @@ public class minimax extends AIModule
 		chosenMove = bestMoveSeen;
 		if(game.canMakeMove(chosenMove))
             game.makeMove(chosenMove);
-        System.out.println(eval(game, true));
 	}
 
 	private int minimax(final GameStateModule state, int depth, int playerID) {
