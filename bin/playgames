@@ -1,0 +1,83 @@
+#!/bin/bash
+cd ..
+echo "minimax v StupidAI 1"
+java Main -p1 minimax -p2 StupidAI -text > results/mini_max_vs_StupidAI_1.txt
+echo "minimax v StupidAI 2"
+java Main -p1 minimax -p2 StupidAI -text > results/mini_max_vs_StupidAI_2.txt
+echo "minimax v StupidAI 3"
+java Main -p1 minimax -p2 StupidAI -text > results/mini_max_vs_StupidAI_3.txt
+echo "minimax v StupidAI 4"
+java Main -p1 minimax -p2 StupidAI -text > results/mini_max_vs_StupidAI_4.txt
+echo "minimax v StupidAI 5"
+java Main -p1 minimax -p2 StupidAI -text > results/mini_max_vs_StupidAI_5.txt
+echo "minimax v RandomAI 1"
+java Main -p1 minimax -p2 RandomAI -text > results/mini_max_vs_RandomAI_1.txt
+echo "minimax v RandomAI 2"
+java Main -p1 minimax -p2 RandomAI -text > results/mini_max_vs_RandomAI_2.txt
+echo "minimax v RandomAI 3"
+java Main -p1 minimax -p2 RandomAI -text > results/mini_max_vs_RandomAI_3.txt
+echo "minimax v RandomAI 4"
+java Main -p1 minimax -p2 RandomAI -text > results/mini_max_vs_RandomAI_4.txt
+echo "minimax v RandomAI 5"
+java Main -p1 minimax -p2 RandomAI -text > results/mini_max_vs_RandomAI_5.txt
+echo "minimax v MonteCarloAI 1"
+java Main -p1 minimax -p2 MonteCarloAI -seed 1 -text > results/mini_max_game_output_seed_1.txt
+echo "minimax v MonteCarloAI 2"
+java Main -p1 minimax -p2 MonteCarloAI -seed 2 -text > results/mini_max_game_output_seed_2.txt
+echo "minimax v MonteCarloAI 3"
+java Main -p1 minimax -p2 MonteCarloAI -seed 3 -text > results/mini_max_game_output_seed_3.txt
+echo "minimax v MonteCarloAI 4"
+java Main -p1 minimax -p2 MonteCarloAI -seed 4 -text > results/mini_max_game_output_seed_4.txt
+echo "minimax v MonteCarloAI 5"
+java Main -p1 minimax -p2 MonteCarloAI -seed 5 -text > results/mini_max_game_output_seed_5.txt
+echo "minimax v MonteCarloAI 6"
+java Main -p2 minimax -p1 MonteCarloAI -seed 6 -text > results/mini_max_game_output_seed_6.txt
+echo "minimax v MonteCarloAI 7"
+java Main -p2 minimax -p1 MonteCarloAI -seed 7 -text > results/mini_max_game_output_seed_7.txt
+echo "minimax v MonteCarloAI 8"
+java Main -p2 minimax -p1 MonteCarloAI -seed 8 -text > results/mini_max_game_output_seed_8.txt
+echo "minimax v MonteCarloAI 9"
+java Main -p2 minimax -p1 MonteCarloAI -seed 9 -text > results/mini_max_game_output_seed_9.txt
+echo "minimax v MonteCarloAI 10"
+java Main -p2 minimax -p1 MonteCarloAI -seed 10 -text > results/mini_max_game_output_seed_10.txt
+echo "alphabeta v MonteCarloAI 1"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 1 -text > results/alpha_beta_game_output_seed_1.txt
+echo "alphabeta v MonteCarloAI 2"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 2 -text > results/alpha_beta_game_output_seed_2.txt
+echo "alphabeta v MonteCarloAI 3"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 3 -text > results/alpha_beta_game_output_seed_3.txt
+echo "alphabeta v MonteCarloAI 4"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 4 -text > results/alpha_beta_game_output_seed_4.txt
+echo "alphabeta v MonteCarloAI 5"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 5 -text > results/alpha_beta_game_output_seed_5.txt
+echo "alphabeta v MonteCarloAI 6"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 6 -text > results/alpha_beta_game_output_seed_6.txt
+echo "alphabeta v MonteCarloAI 7"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 7 -text > results/alpha_beta_game_output_seed_7.txt
+echo "alphabeta v MonteCarloAI 8"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 8 -text > results/alpha_beta_game_output_seed_8.txt
+echo "alphabeta v MonteCarloAI 9"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 9 -text > results/alpha_beta_game_output_seed_9.txt
+echo "alphabeta v MonteCarloAI 10"
+java Main -p1 alphabeta -p2 MonteCarloAI -seed 10 -text > results/alpha_beta_game_output_seed_10.txt
+echo "alphabeta v MonteCarloAI 11"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 11 -text > results/alpha_beta_game_output_seed_11.txt
+echo "alphabeta v MonteCarloAI 12"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 12 -text > results/alpha_beta_game_output_seed_12.txt
+echo "alphabeta v MonteCarloAI 13"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 13 -text > results/alpha_beta_game_output_seed_13.txt
+echo "alphabeta v MonteCarloAI 14"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 14 -text > results/alpha_beta_game_output_seed_14.txt
+echo "alphabeta v MonteCarloAI 15"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 15 -text > results/alpha_beta_game_output_seed_15.txt
+echo "alphabeta v MonteCarloAI 16"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 16 -text > results/alpha_beta_game_output_seed_16.txt
+echo "alphabeta v MonteCarloAI 17"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 17 -text > results/alpha_beta_game_output_seed_17.txt
+echo "alphabeta v MonteCarloAI 18"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 18 -text > results/alpha_beta_game_output_seed_18.txt
+echo "alphabeta v MonteCarloAI 19"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 19 -text > results/alpha_beta_game_output_seed_19.txt
+echo "alphabeta v MonteCarloAI 20"
+java Main -p2 alphabeta -p1 MonteCarloAI -seed 20 -text > results/alpha_beta_game_output_seed_20.txt
+
