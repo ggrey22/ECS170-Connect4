@@ -4,7 +4,7 @@ public class minimax extends AIModule
 {
 	int player;
 	int opponent;
-    int maxDepth = 6;
+    int maxDepth = 7;
     int numAtDepth = 0;
 	int bestMoveSeen;
 
