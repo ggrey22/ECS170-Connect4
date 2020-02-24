@@ -18,14 +18,13 @@ public class alphabeta extends AIModule
 		chosenMove = bestMoveSeen;
 		if(game.canMakeMove(chosenMove))
             game.makeMove(chosenMove);
-        System.out.println(eval(game, true));
 	}
 
     private int alphabeta(final GameStateModule state, int depth, int alpha, int beta, int playerID)
     {
         if(depth == maxDepth)
         {
-            return eval(state, false);
+            return eval(state);
         }
         int bestVal = Integer.MIN_VALUE;
         depth++;
@@ -40,7 +39,7 @@ public class alphabeta extends AIModule
                 {
                     int currentEval;
                     state.makeMove(i);
-                    currentEval = eval(state, false);
+                    currentEval = eval(state);
                     unsortedEvals.put(i, currentEval);
                     state.unMakeMove();
                 }
@@ -84,7 +83,7 @@ public class alphabeta extends AIModule
                 {
                     int currentEval;
                     state.makeMove(i);
-                    currentEval = eval(state, false);
+                    currentEval = eval(state);
                     unsortedEvals.put(i, currentEval);
                     state.unMakeMove();
                 }
@@ -111,47 +110,6 @@ public class alphabeta extends AIModule
                 }
             }
             return v;          
-        }
-    }
-
-	private int minimax(final GameStateModule state, int depth, int playerID) {
-        if (terminate)
-            return 0;
-        if (depth == maxDepth) {
-            return eval(state, false);
-        }
-        depth++;
-        int value = 0;
-        //max's turn
-        int bestVal = Integer.MIN_VALUE;
-        if(playerID == player){
-            value = Integer.MIN_VALUE + 1;
-            for(int i = 0; i < state.getWidth(); i++){
-                if(state.canMakeMove(i)) {
-                    state.makeMove(i);
-                    value = Math.max(value, minimax(state, depth, opponent));
-                    state.unMakeMove();
-                    if (value > bestVal){
-                        bestVal = value;
-                        if (depth == 1) { //top of recursion, make our move choice
-                            bestMoveSeen = i;
-                        }
-                    }
-                }
-            }
-            return value;
-        }
-
-        else { //min's turn
-            value = Integer.MAX_VALUE;
-            for(int i = 0; i < state.getWidth(); i++) {
-                if (state.canMakeMove(i)) {
-                    state.makeMove(i);
-                    value = Math.min(value, minimax(state, depth, player));
-                    state.unMakeMove();
-                }
-            }
-            return value;
         }
     }
 
@@ -353,18 +311,10 @@ public class alphabeta extends AIModule
         }
     }
 
-	private int eval(final GameStateModule state, boolean print){
+	private int eval(final GameStateModule state){
         int inARowMe[] = {0, 0, 0, 0};
         int inARowOpponent[] = {0, 0, 0, 0};
         numInARow(state, inARowMe, inARowOpponent);
-        if(print){
-            for(int i = 0; i < 4; i++){
-                System.out.print(inARowMe[i] + " ");
-            }
-            for(int i = 0; i < 4; i++){
-                System.out.print(inARowOpponent[i] + " ");
-            }
-        }
         if(state.isGameOver())
         {
             if(state.getWinner() == opponent)
