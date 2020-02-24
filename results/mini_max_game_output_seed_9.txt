@@ -189,56 +189,56 @@ x.xxx.x
 x.oxo.x
 
 ..xoo..
-x.oxx..
+..oxx.x
 o.ooo.o
 x.ooo.x
 x.xxx.x
 x.oxo.x
 
-o.xoo..
-x.oxx..
+..xoo..
+o.oxx.x
 o.ooo.o
 x.ooo.x
 x.xxx.x
 x.oxo.x
 
-o.xoo..
-x.oxx.x
+x.xoo..
+o.oxx.x
 o.ooo.o
 x.ooo.x
 x.xxx.x
 x.oxo.x
 
-o.xoo.o
-x.oxx.x
+x.xoo.o
+o.oxx.x
 o.ooo.o
 x.ooo.x
 x.xxx.x
 x.oxo.x
 
-o.xoo.o
-x.oxx.x
+x.xoo.o
+o.oxx.x
 o.ooo.o
 x.ooo.x
 x.xxx.x
 xxoxo.x
 
-o.xoo.o
-x.oxx.x
+x.xoo.o
+o.oxx.x
 o.ooo.o
 x.ooo.x
 xoxxx.x
 xxoxo.x
 
-o.xoo.o
-x.oxx.x
+x.xoo.o
+o.oxx.x
 o.ooo.o
 xxooo.x
 xoxxx.x
 xxoxo.x
 
-o.xoo.o
-x.oxx.x
+x.xoo.o
+o.oxx.x
 ooooo.o
 xxooo.x
 xoxxx.x

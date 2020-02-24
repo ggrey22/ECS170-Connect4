@@ -32,166 +32,166 @@
 .......
 ...x...
 ...o...
-..ox...
+...xo..
 
 .......
 .......
 .......
 ...x...
-..xo...
-..ox...
+...ox..
+...xo..
 
 .......
 .......
 .......
-..ox...
-..xo...
-..ox...
+...xo..
+...ox..
+...xo..
 
 .......
 .......
-..x....
-..ox...
-..xo...
-..ox...
+....x..
+...xo..
+...ox..
+...xo..
 
 .......
 .......
-..x....
-..ox...
-..xo...
-..ox.o.
+....x..
+...xo..
+...ox..
+.o.xo..
 
 .......
 .......
-..xx...
-..ox...
-..xo...
-..ox.o.
+...xx..
+...xo..
+...ox..
+.o.xo..
 
 .......
 .......
-..xx...
-..ox...
-..xo.o.
-..ox.o.
+...xx..
+...xo..
+.o.ox..
+.o.xo..
 
 .......
 ...x...
-..xx...
-..ox...
-..xo.o.
-..ox.o.
+...xx..
+...xo..
+.o.ox..
+.o.xo..
 
 ...o...
 ...x...
-..xx...
-..ox...
-..xo.o.
-..ox.o.
+...xx..
+...xo..
+.o.ox..
+.o.xo..
 
 ...o...
 ...x...
-..xx...
-..ox...
-..xo.o.
-.xox.o.
+...xx..
+...xo..
+.o.ox..
+.o.xox.
 
 ...o...
 ...x...
-..xx...
-..ox.o.
-..xo.o.
-.xox.o.
+...xx..
+.o.xo..
+.o.ox..
+.o.xox.
 
 ...o...
 ...x...
-..xx.x.
-..ox.o.
-..xo.o.
-.xox.o.
+.x.xx..
+.o.xo..
+.o.ox..
+.o.xox.
 
 ...o...
 ...x...
-..xx.x.
-..ox.o.
-..xo.o.
-.xoxoo.
+.x.xx..
+.o.xo..
+.o.ox..
+.ooxox.
 
 ...o...
 ...x...
-..xx.x.
-..ox.o.
-..xoxo.
-.xoxoo.
+.x.xx..
+.o.xo..
+.oxox..
+.ooxox.
 
 ...o...
 ...x...
-..xx.x.
-..ox.o.
+.x.xx..
+.o.xo..
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-...x.x.
-..xx.x.
-..ox.o.
+.x.x...
+.x.xx..
+.o.xo..
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-...x.x.
-..xx.x.
-.oox.o.
+.x.x...
+.x.xx..
+.o.xoo.
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-...x.x.
-.xxx.x.
-.oox.o.
+.x.x...
+.x.xxx.
+.o.xoo.
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-.o.x.x.
-.xxx.x.
-.oox.o.
+.x.x.o.
+.x.xxx.
+.o.xoo.
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-.oxx.x.
-.xxx.x.
-.oox.o.
+.x.x.o.
+.x.xxx.
+.oxxoo.
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-.oxx.x.
-.xxx.x.
-.ooxoo.
+.x.x.o.
+.xoxxx.
+.oxxoo.
 .oxoxo.
-.xoxoo.
+.ooxox.
 
 ...o...
-.oxx.x.
-.xxx.x.
-.ooxoo.
+.x.xxo.
+.xoxxx.
+.oxxoo.
 .oxoxo.
-xxoxoo.
+.ooxox.
 
 ...o...
-.oxx.x.
-.xxxox.
-.ooxoo.
+.xoxxo.
+.xoxxx.
+.oxxoo.
 .oxoxo.
-xxoxoo.
+.ooxox.
 
-...o...
-.oxxxx.
-.xxxox.
-.ooxoo.
+...o.x.
+.xoxxo.
+.xoxxx.
+.oxxoo.
 .oxoxo.
-xxoxoo.
+.ooxox.
 Player 1 won

@@ -5,7 +5,6 @@
 .......
 .......
 .......
-7 0 0 0 0 0 0 0 7
 
 .......
 .......
@@ -20,7 +19,6 @@
 .......
 ...o...
 ...x...
-17 0 0 0 8 0 0 0 9
 
 .......
 .......
@@ -34,238 +32,166 @@
 .......
 ...x...
 ...o...
-..ox...
-23 1 0 0 8 1 0 0 15
+...xo..
 
 .......
 .......
 ...x...
 ...x...
 ...o...
-..ox...
+...xo..
 
 .......
 .......
 ...x...
 ...x...
-..oo...
-..ox...
-15 7 0 0 2 4 0 0 313
+...oo..
+...xo..
 
 .......
 .......
 ...x...
-..xx...
-..oo...
-..ox...
+...xx..
+...oo..
+...xo..
 
 .......
 ...o...
 ...x...
-..xx...
-..oo...
-..ox...
-8 13 0 0 8 4 0 0 900
+...xx..
+...oo..
+...xo..
 
 .......
 ...o...
-..xx...
-..xx...
-..oo...
-..ox...
+...xx..
+...xx..
+...oo..
+...xo..
 
 .......
 ...o...
-..xx...
-..xx...
-..oo...
-..ox.o.
-6 13 1 0 6 4 0 0 10900
+...xx..
+...xx..
+...oo..
+.o.xo..
 
 .......
-..xo...
-..xx...
-..xx...
-..oo...
-..ox.o.
+...ox..
+...xx..
+...xx..
+...oo..
+.o.xo..
 
-..o....
-..xo...
-..xx...
-..xx...
-..oo...
-..ox.o.
-6 13 1 0 6 4 0 0 10900
+....o..
+...ox..
+...xx..
+...xx..
+...oo..
+.o.xo..
 
-..o....
-..xo...
-..xx...
-..xx...
-..oo.x.
-..ox.o.
+....o..
+...ox..
+...xx..
+...xx..
+.x.oo..
+.o.xo..
 
-..o....
-..xo...
-..xx...
-..xx...
-..oo.x.
-o.ox.o.
-4 14 2 0 6 3 0 0 21098
+....o..
+...ox..
+...xx..
+...xx..
+.x.oo..
+.o.xo.o
 
-..o....
-..xo...
-..xx...
-..xx.x.
-..oo.x.
-o.ox.o.
+....o..
+...ox..
+...xx..
+.x.xx..
+.x.oo..
+.o.xo.o
 
-..o....
-..xo...
-..xx.o.
-..xx.x.
-..oo.x.
-o.ox.o.
-2 13 2 0 2 3 1 0 11000
+....o..
+...ox..
+.o.xx..
+.x.xx..
+.x.oo..
+.o.xo.o
 
-..ox...
-..xo...
-..xx.o.
-..xx.x.
-..oo.x.
-o.ox.o.
+...xo..
+...ox..
+.o.xx..
+.x.xx..
+.x.oo..
+.o.xo.o
 
-..ox...
-..xo...
-..xx.o.
-..xx.x.
-o.oo.x.
-o.ox.o.
-3 11 4 0 1 2 2 0 20902
+...xo..
+...ox..
+.o.xx..
+.x.xx..
+.x.oo.o
+.o.xo.o
 
-..ox...
-..xo...
-..xx.o.
-x.xx.x.
-o.oo.x.
-o.ox.o.
+...xo..
+...ox..
+.o.xx..
+.x.xx.x
+.x.oo.o
+.o.xo.o
 
-..ox...
-..xo...
-o.xx.o.
-x.xx.x.
-o.oo.x.
-o.ox.o.
-3 9 5 0 1 2 2 0 30702
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+.x.oo.o
+.o.xo.o
 
-..ox...
-..xo...
-o.xx.o.
-x.xx.x.
-o.oo.x.
-o.ox.ox
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+.x.oo.o
+xo.xo.o
 
-..ox...
-..xo...
-o.xx.o.
-x.xx.x.
-o.oo.x.
-o.oxoox
-2 10 5 0 1 2 2 0 30801
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+.x.oo.o
+xooxo.o
 
-..ox...
-..xo.x.
-o.xx.o.
-x.xx.x.
-o.oo.x.
-o.oxoox
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+xx.oo.o
+xooxo.o
 
-..ox.o.
-..xo.x.
-o.xx.o.
-x.xx.x.
-o.oo.x.
-o.oxoox
-1 10 5 0 1 2 2 0 30800
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+xx.oo.o
+xooxooo
 
-..ox.o.
-..xo.x.
-o.xx.o.
-x.xx.x.
-o.oo.xx
-o.oxoox
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+xx.ooxo
+xooxooo
 
-..ox.o.
-o.xo.x.
-o.xx.o.
-x.xx.x.
-o.oo.xx
-o.oxoox
-1 9 7 0 1 2 2 0 50700
+...xo..
+...ox..
+.o.xx.o
+.x.xx.x
+xxoooxo
+xooxooo
 
-..ox.o.
-o.xo.x.
-o.xx.o.
-x.xx.xx
-o.oo.xx
-o.oxoox
-
-..ox.o.
-o.xo.x.
-o.xx.oo
-x.xx.xx
-o.oo.xx
-o.oxoox
-0 6 7 0 1 2 2 0 50399
-
-x.ox.o.
-o.xo.x.
-o.xx.oo
-x.xx.xx
-o.oo.xx
-o.oxoox
-
-x.ox.o.
-o.xo.xo
-o.xx.oo
-x.xx.xx
-o.oo.xx
-o.oxoox
-0 5 8 0 1 1 3 0 50399
-
-x.ox.ox
-o.xo.xo
-o.xx.oo
-x.xx.xx
-o.oo.xx
-o.oxoox
-
-x.ox.ox
-o.xo.xo
-o.xx.oo
-x.xx.xx
-o.oo.xx
-oooxoox
-1 4 9 0 1 0 2 0 70400
-
-x.ox.ox
-o.xo.xo
-o.xx.oo
-x.xx.xx
-oxoo.xx
-oooxoox
-
-x.ox.ox
-o.xo.xo
-o.xx.oo
-xoxx.xx
-oxoo.xx
-oooxoox
-0 2 8 1 1 0 2 0 10000000
-
-x.ox.ox
-o.xo.xo
-oxxx.oo
-xoxx.xx
-oxoo.xx
-oooxoox
+...xo..
+...ox..
+.o.xx.o
+.xxxx.x
+xxoooxo
+xooxooo
 Player 1 won

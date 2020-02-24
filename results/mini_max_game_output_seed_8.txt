@@ -132,115 +132,115 @@ x.ooo..
 x.xxx..
 x.oxo..
 
-..x....
+..xx...
 ..ox...
 o.oo...
 x.ooo..
 x.xxx..
-x.oxo.x
+x.oxo..
 
-..x....
+..xx...
 ..ox...
 o.ooo..
 x.ooo..
 x.xxx..
-x.oxo.x
+x.oxo..
 
-..x....
+..xx...
+..oxx..
+o.ooo..
+x.ooo..
+x.xxx..
+x.oxo..
+
+..xxo..
+..oxx..
+o.ooo..
+x.ooo..
+x.xxx..
+x.oxo..
+
+..xxo..
 ..oxx..
 o.ooo..
 x.ooo..
 x.xxx..
 x.oxo.x
 
-..xo...
+..xxo..
 ..oxx..
 o.ooo..
 x.ooo..
-x.xxx..
+x.xxx.o
 x.oxo.x
 
-..xo...
-..oxx..
-o.ooo..
-x.ooo..
-x.xxx.x
-x.oxo.x
-
-..xoo..
-..oxx..
-o.ooo..
-x.ooo..
-x.xxx.x
-x.oxo.x
-
-..xoo..
+..xxo..
 ..oxx..
 o.ooo..
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-..xoo..
+..xxo..
 ..oxx..
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-..xoo..
+..xxo..
 ..oxx.x
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-..xoo..
+..xxo..
 o.oxx.x
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-x.xoo..
+x.xxo..
 o.oxx.x
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-x.xoo.o
+x.xxo.o
 o.oxx.x
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 x.oxo.x
 
-x.xoo.o
+x.xxo.o
 o.oxx.x
 o.ooo.o
 x.ooo.x
-x.xxx.x
+x.xxx.o
 xxoxo.x
 
-x.xoo.o
+x.xxo.o
 o.oxx.x
 o.ooo.o
 x.ooo.x
-xoxxx.x
+xoxxx.o
 xxoxo.x
 
-x.xoo.o
+x.xxo.o
 o.oxx.x
 o.ooo.o
 xxooo.x
-xoxxx.x
+xoxxx.o
 xxoxo.x
 
-x.xoo.o
+x.xxo.o
 o.oxx.x
 ooooo.o
 xxooo.x
-xoxxx.x
+xoxxx.o
 xxoxo.x
 Player 2 won

@@ -24,7 +24,7 @@ public class minimax extends AIModule
             return 0;
         if (depth == maxDepth) {
             numAtDepth++;
-            return eval(state, false);
+            return eval(state);
         }
         depth++;
         int value = 0;
@@ -259,18 +259,10 @@ public class minimax extends AIModule
         }
     }
 
-	private int eval(final GameStateModule state, boolean print){
+	private int eval(final GameStateModule state){
         int inARowMe[] = {0, 0, 0, 0};
         int inARowOpponent[] = {0, 0, 0, 0};
         numInARow(state, inARowMe, inARowOpponent);
-        if(print){
-            for(int i = 0; i < 4; i++){
-                System.out.print(inARowMe[i] + " ");
-            }
-            for(int i = 0; i < 4; i++){
-                System.out.print(inARowOpponent[i] + " ");
-            }
-        }
         if(state.isGameOver())
         {
             if(state.getWinner() == opponent)
