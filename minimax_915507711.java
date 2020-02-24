@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class minimax extends AIModule
+public class minimax_915507711 extends AIModule
 {
 	int player;
 	int opponent;

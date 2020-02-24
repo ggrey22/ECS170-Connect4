@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class alphabeta extends AIModule
+public class alphabeta_915507711 extends AIModule
 {
 	int player;
 	int opponent;
